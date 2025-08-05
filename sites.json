@@ -1,0 +1,8 @@
+{
+  "valid_sites": [
+    "open.spotify.com"
+  ],
+  "invalid_sites": [
+    "hianime.to"
+  ]
+}
