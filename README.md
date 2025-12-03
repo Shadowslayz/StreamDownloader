@@ -1,135 +1,166 @@
-# StreamDownloader  
-**Universal Media Downloader**
+StreamDownloader
 
----
+Universal Media Downloader
 
-A user-friendly Windows app to download **audio and video** from:
+A user-friendly Windows app to download audio and video from:
 
-- YouTube  
-- Spotify  
-- SoundCloud  
-- Bandcamp  
-- and more...
+YouTube
 
-Supports **playlists**, **format selection (MP3, MP4, WAV, etc.)**, **dynamic site status tracking**, and **auto-parsing Spotify playlists**.
+Spotify
 
----
+SoundCloud
 
-## ✅ Features
+Bandcamp
 
-- Audio/Video downloads from many platforms  
-- Multiple format choices (MP3, MP4, WAV, MKV, etc.)  
-- Automatically extracts playlists (YouTube/Spotify)  
-- Warns about sites that don’t work  
-- Dynamic queue system  
-- Embedded terminal log  
-- GUI with theme-aware layout  
-- Auto-generates videos from audio-only sources  
-- Works offline (except for the actual downloads 😅)
+and more…
 
----
+Supports playlists, format selection (MP3, MP4, WAV, etc.), dynamic site status tracking, and auto-parsing Spotify playlists.
 
-## 🚀 How to Use
+✅ Features
 
-1. **Install Python 3.9+**  
-   Get it from: [https://python.org](https://python.org)  
-   ✅ Make sure to check **"Add Python to PATH"** during install!
+Download audio & video from multiple platforms
 
-2. **Install dependencies**  
-   Open a terminal (Command Prompt) and run:
-   ```bash
-   pip install yt-dlp spotdl requests tk
-   ```
+Multiple output formats: MP3, MP4, WAV, MKV, M4A, etc.
 
-4. **Run the app**  
-   ```bash
-   python downloader.py
-   ```
+Automatically extracts YouTube & Spotify playlists
 
----
+Warns about unsupported/unstable sites
 
-## 🧠 Using the App
+Dynamic queue system
 
-1. Launch the app (`python downloader.py`)  
-2. Choose between **Audio** or **Video** mode  
-3. Paste a link (YouTube, Spotify, etc.)  
-4. Select desired output format  
-5. Click **Queue Download**  
-6. Downloads go to the `/downloads/audio` or `/downloads/video` folder
+Built-in terminal-style log
 
----
+Theme-aware modern GUI
 
-## 🎵 Spotify Support
+Auto-wraps audio-only sources into video format
 
-- Paste any **Spotify track, album, or playlist**  
-- The app uses `spotdl` to auto-download each track from YouTube  
-- All songs are queued automatically with correct titles
+Works offline (except for downloading itself 😅)
 
----
+🚀 How to Install
+1. Install Python 3.9+
 
-## 📑 Dynamic Site List
+Download from: https://python.org
 
-- The app tracks which **domains work** or **fail**
-- Click **“View Supported Sites”** to see the lists
-- If a site fails, it’s moved to the "invalid" list
+⚠️ Make sure to check "Add Python to PATH" on installation.
 
----
+2. Install dependencies
 
-## 🛠️ Troubleshooting
+Open Command Prompt and run:
 
-- **Spotify not working?** Make sure you ran:  
-  ```bash
-  pip install spotdl
-  ```
+pip install yt-dlp spotdl requests tk
 
-- **Site says “invalid”?**  
-  You can still queue it, but it might fail — the app will warn you.
+3. Place FFmpeg binaries in the app folder
 
-- **Black screen for SoundCloud/Bandcamp in Video Mode?**  
-  That’s intended! Audio-only sites will auto-wrap audio in a black video background when using Video mode.
+Your project root directory must contain the following files:
 
----
+ffmpeg.exe
 
-## 📂 Downloads Location
+ffplay.exe
 
-| Type   | Location                    |
-|--------|-----------------------------|
-| Audio  | `downloads/audio/`          |
-| Video  | `downloads/video/`          |
-| Temp   | `downloads/audio_temp/`     |
+ffprobe.exe
 
----
+These must be placed in the same folder as downloader.py, or the app cannot process audio/video.
 
-## 🔑 Keyboard Shortcuts
+You can download FFmpeg from: https://ffmpeg.org/download.html
 
-- Press **Delete** on a selected queue item to remove it  
-- Right-click an item for context menu options
+→ Extract the bin/ folder and copy those three .exe files.
 
----
+4. Run the app
+python downloader.py
 
-## 💻 Developers
+🧠 How to Use
 
-All logic is in `downloader.py`  
-Customizations include:
+Start the app
 
-- `AUDIO_ONLY_DOMAINS` – defines domains that don’t support video  
-- `ffmpeg.exe` – bundled next to the script  
-- `sites.json` – stores known working/failing domains  
-- Modular functions and thread-safe queue processing
+Pick Audio or Video mode
 
----
+Paste your link (YouTube, Spotify, etc.)
 
-## ❤️ Credits
+Choose your format
 
-- [yt-dlp](https://github.com/yt-dlp/yt-dlp) for downloading  
-- [spotdl](https://github.com/spotDL/spotify-downloader) for Spotify  
-- [tkinter](https://docs.python.org/3/library/tkinter.html) for GUI  
-- [FFmpeg](https://ffmpeg.org/) for processing
+Click Queue Download
 
----
+Files will appear in the appropriate download folder
 
-## ✅ Final Notes
+🎵 Spotify Support
 
-- This is a local GUI app — no telemetry, no ads, no tracking.  
-- You **must** supply `ffmpeg.exe` manually (due to licensing).  
-- Enjoy downloading and archiving your favorite content!
+Paste Spotify track, album, or playlist links
+
+App uses spotdl to match songs on YouTube
+
+Automatically queues + names all tracks correctly
+
+📑 Dynamic Site List
+
+App tracks domains in sites.json
+
+Good sites go to valid_sites
+
+Failing sites move to invalid_sites
+
+Check via: “View Supported Sites” in the UI
+
+🛠️ Troubleshooting
+Spotify not working?
+
+Make sure spotdl is installed:
+
+pip install spotdl
+
+Downloads failing?
+
+Your ffmpeg, ffplay, or ffprobe might be missing — check your root directory.
+
+Audio-only site + Video mode = black screen?
+
+This is intended.
+App wraps audio into a black video to preserve MP4 output.
+
+📂 Download Locations
+Type	Folder
+Audio	downloads/audio/
+Video	downloads/video/
+Temp	downloads/audio_temp/
+🔑 Keyboard Shortcuts
+
+Delete key → remove selected queue item
+
+Right-click → context menu options
+
+💻 Developer Notes
+
+Core logic lives in:
+
+downloader.py
+
+Important components:
+
+AUDIO_ONLY_DOMAINS → list of audio-only sites
+
+sites.json → tracks valid/invalid domains
+
+ffmpeg.exe, ffplay.exe, ffprobe.exe → processing binaries
+
+Thread-safe queue system
+
+Dynamic terminal-style log output
+
+❤️ Credits
+
+yt-dlp → video/audio extraction
+
+spotdl → Spotify-to-YouTube mapping
+
+FFmpeg → audio & video processing
+
+Tkinter → GUI framework
+
+✅ Final Notes
+
+100% local app — no telemetry.
+
+Requires ffmpeg, ffplay, and ffprobe in the root directory.
+
+Fully open and modifiable.
+
+Enjoy downloading & archiving your favorite media!
