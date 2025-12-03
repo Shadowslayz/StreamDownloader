@@ -1,6 +1,8 @@
 {
   "valid_sites": [
-    "open.spotify.com"
+    "open.spotify.com",
+    "dailymotion.com",
+    "youtube.com"
   ],
   "invalid_sites": [
     "hianime.to"
