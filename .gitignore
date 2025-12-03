@@ -1,0 +1,5 @@
+# Ignore ffmpeg/ffplay/ffprobe binaries and related files anywhere in the repo
+ffmpeg*
+ffplay*
+ffprobe*
+libffmpeg*
